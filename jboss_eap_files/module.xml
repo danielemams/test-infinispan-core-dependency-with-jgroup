@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="org.example.testInfinispanCoreDependencyWithJgroupJar" xmlns="urn:jboss:module:1.9">
+    <resources>
+        <resource-root path="testInfinispanCoreDependencyWithJgroupJar-1.0-SNAPSHOT.jar"/>
+    </resources>
+</module>
