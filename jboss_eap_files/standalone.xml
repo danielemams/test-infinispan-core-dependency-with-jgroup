@@ -181,11 +181,6 @@
             <local-routing/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:ee:6.0">
-            <global-modules>
-                <module name="org.example.testInfinispanCoreDependencyWithJgroupJar"/>
-                <module name="org.jgroups"/>
-                <module name="org.infinispan"/>
-            </global-modules>
             <spec-descriptor-property-replacement>false</spec-descriptor-property-replacement>
             <concurrent>
                 <context-services>
@@ -550,7 +545,7 @@
             <content sha1="49d68db5c1e86f64011cb0109a781ee7b179d0e3"/>
         </deployment>
         <deployment name="testInfinispanCoreDependencyWithJgroup.war" runtime-name="testInfinispanCoreDependencyWithJgroup.war">
-            <content sha1="94d03917836476bf5ffd88bc127b667b190d9817"/>
+            <content sha1="a744451d8f3538f6c2d905949c0e58074d158a71"/>
         </deployment>
     </deployments>
 </server>

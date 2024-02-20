@@ -19,7 +19,7 @@ public class HelloWorldServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final PrintWriter writer = resp.getWriter();
         writer.println("Cache package: " + extractVersion(Cache.class));
-        writer.println("Buffers package: " + extractVersion(Buffers.class));
+        //writer.println("Buffers package: " + extractVersion(Buffers.class));
         writer.close();
     }
 }
