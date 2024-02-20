@@ -184,6 +184,7 @@
             <global-modules>
                 <module name="org.example.testInfinispanCoreDependencyWithJgroupJar"/>
                 <module name="org.jgroups"/>
+                <module name="org.infinispan"/>
             </global-modules>
             <spec-descriptor-property-replacement>false</spec-descriptor-property-replacement>
             <concurrent>
