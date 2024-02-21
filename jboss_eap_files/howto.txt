@@ -1,0 +1,69 @@
+1. jar:
+<maven.compiler.source>8</maven.compiler.source>
+<maven.compiler.target>8</maven.compiler.target>
+
+2. $JAVA_HOME e javac devono puntare alla jdk11:
+
+[dmammare@dmammare test-infinispan-core-dependency-with-jgroup-jar]$ javac -version
+javac 11.0.21
+[dmammare@dmammare test-infinispan-core-dependency-with-jgroup-jar]$ echo $JAVA_HOME
+/usr/lib/jvm/jdk-11.0.21
+
+
+3. compili e metti il modulo su jboss eap:
+
+$ mvn clean install
+
+> modulo su EAP:
+- location: jboss/jboss-eap-7.4.15/modules/my/custom/module/main
+- content:
+[dmammare@dmammare main]$ ls
+module.xml  testInfinispanCoreDependencyWithJgroupJar-1.0-SNAPSHOT.jar
+
+
+
+
+4. prima di runnare jboss. rimetti $JAVA_HOME e java che puntano a jvm8 (javac è indifferente in questo momento):
+
+
+
+[dmammare@dmammare testJdk11Jvm8]$ echo $JAVA_HOME
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.282.b08-4.el8.x86_64
+[dmammare@dmammare testJdk11Jvm8]$ java -version
+openjdk version "1.8.0_282"
+OpenJDK Runtime Environment (build 1.8.0_282-b08)
+OpenJDK 64-Bit Server VM (build 25.282-b08, mixed mode)
+
+
+
+
+
+
+that's all
+
+in questo modo ho:
+
+java.lang.NoSuchMethodError: java.nio.ByteBuffer.clear()Ljava/nio/ByteBuffer;
+
+
+
+Note:
+non usando mvn, ma javac e java, per avere lo stesso errore a runtime (compilo con jdk11, runno su jvm8):
+
+[dmammare@dmammare testJdk11Jvm8]$ javac -version
+javac 11.0.21
+[dmammare@dmammare testJdk11Jvm8]$ java -version
+openjdk version "1.8.0_282"
+OpenJDK Runtime Environment (build 1.8.0_282-b08)
+OpenJDK 64-Bit Server VM (build 25.282-b08, mixed mode)
+[dmammare@dmammare testJdk11Jvm8]$ javac -source 8 -target 8 MyClass.java
+warning: [options] bootstrap class path not set in conjunction with -source 8
+1 warning
+[dmammare@dmammare testJdk11Jvm8]$ java MyClass
+Exception in thread "main" java.lang.NoSuchMethodError: java.nio.ByteBuffer.clear()Ljava/nio/ByteBuffer;
+	at MyClass.main(MyClass.java:6)
+[dmammare@dmammare testJdk11Jvm8]$
+
+
+
+il segreto è compilare con jdk11, creando classi compatibili con jvm8.
