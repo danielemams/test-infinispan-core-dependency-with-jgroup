@@ -1,7 +1,6 @@
 package org.example.testInfinispanCoreDependencyWithJgroup;
 
 import org.infinispan.Cache;
-import org.jgroups.nio.Buffers;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,6 @@ public class HelloWorldServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final PrintWriter writer = resp.getWriter();
         writer.println("Cache package: " + extractVersion(Cache.class));
-        //writer.println("Buffers package: " + extractVersion(Buffers.class));
         writer.close();
     }
 }
